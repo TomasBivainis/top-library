@@ -1,4 +1,8 @@
 let booksDiv = document.getElementById("books");
+let btn = document.getElementById("addBook");
+let btnExit = document.getElementById("exit");
+let container = document.getElementById("container");
+let formInputs = document.querySelectorAll("form input");
 let myLibrary = [{title: "Harry Potter", authro: "J. K. Rowlling", pages: 300, read: true}];
 
 function Book(title, author, pages, read) {
@@ -21,5 +25,18 @@ function displayBooks() {
     booksDiv.append(bookDiv);
   })
 }
+
+btn.addEventListener('click', () => {
+  container.classList.toggle("show");
+})
+
+btnExit.addEventListener('click', () => {
+
+  container.classList.toggle("show");
+
+  formInputs.forEach(i => {
+    i.value = "";
+  })
+})
 
 displayBooks();
