@@ -1,5 +1,6 @@
 let booksDiv = document.getElementById("books");
 let btn = document.getElementById("addBook");
+let btnSubmit = document.getElementById("submit");
 let btnExit = document.getElementById("exit");
 let container = document.getElementById("container");
 let formInputs = document.querySelectorAll("form input");
@@ -18,6 +19,8 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function displayBooks() {
+  booksDiv.innerHTML = "";
+
   myLibrary.forEach(i => {
     console.log(i);
     let bookDiv = document.createElement("div");
@@ -26,17 +29,33 @@ function displayBooks() {
   })
 }
 
-btn.addEventListener('click', () => {
-  container.classList.toggle("show");
-})
-
-btnExit.addEventListener('click', () => {
-
+function exitForm() {
   container.classList.toggle("show");
 
   formInputs.forEach(i => {
     i.value = "";
+    i.checked = false;
   })
+}
+
+btn.addEventListener('click', () => {
+  container.classList.toggle("show");
+})
+
+btnExit.addEventListener('click', exitForm);
+
+btnSubmit.addEventListener('click', e => {
+  let props = [];
+
+  formInputs.forEach(i => {
+    props.push(i.value);
+  })
+
+  addBookToLibrary(...props);
+  displayBooks();
+  exitForm();
+
+  e.preventDefault();
 })
 
 displayBooks();
