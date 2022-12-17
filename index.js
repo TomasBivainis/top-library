@@ -3,6 +3,7 @@ let btn = document.getElementById("addBook");
 let btnSubmit = document.getElementById("submit");
 let btnExit = document.getElementById("exit");
 let container = document.getElementById("container");
+let form = document.getElementById("form");
 let formInputs = document.querySelectorAll("form input");
 let myLibrary = [{title: "Harry Potter", authro: "J. K. Rowlling", pages: 300, read: true}];
 
@@ -22,7 +23,6 @@ function displayBooks() {
   booksDiv.innerHTML = "";
 
   myLibrary.forEach(i => {
-    console.log(i);
     let bookDiv = document.createElement("div");
     bookDiv.innerHTML = i.title;
     booksDiv.append(bookDiv);
@@ -45,12 +45,13 @@ btn.addEventListener('click', () => {
 btnExit.addEventListener('click', exitForm);
 
 btnSubmit.addEventListener('click', e => {
-  let props = [];
+  if(!form.checkValidity()) return;
+  let props=[];
 
   formInputs.forEach(i => {
     props.push(i.value);
   })
-
+  
   addBookToLibrary(...props);
   displayBooks();
   exitForm();
