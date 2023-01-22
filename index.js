@@ -22,31 +22,61 @@ function addBookToLibrary(title, author, pages, read) {
 function displayBooks() {
   booksDiv.innerHTML = "";
 
-  myLibrary.forEach(i => {
+  for (let i = 0; i < myLibrary.length; i++) {
+    currentBook = myLibrary[i];
+
     let bookDiv = document.createElement("div");
 
     bookDiv.classList.add("book");
 
     let title = document.createElement("h1");
-    title.innerHTML = i.title;
+    title.innerHTML = currentBook.title;
 
     let author = document.createElement("h3");
-    author.innerHTML = i.author;
+    author.innerHTML = currentBook.author;
 
     let pages = document.createElement("p");
-    pages.innerHTML = `${i.pages} pages`;
+    pages.innerHTML = `${currentBook.pages} pages`;
     
     let read = document.createElement("p");
     if(read) read.innerHTML = "The book is read.";
     else read.innerHTML = "The book is not read.";
 
+    //TODO: create a x (delete) button and make it work (deletes the book)
+
+    let exit = document.createElement("button");
+    exit.innerHTML = "X";
+    exit.classList.add("exit");
+
+    exit.addEventListener('click', e => {
+      index = e.composedPath()[1].id;
+
+      newLibrary = [];
+
+      for(let i = 0; i < myLibrary.length; i++) {
+        if(i == index) continue;
+        newLibrary.push(myLibrary[i]);
+      }
+
+      console.log(newLibrary);
+
+      myLibrary = newLibrary;
+
+      console.log(myLibrary);
+
+      displayBooks();
+    });
+
     bookDiv.append(title);
     bookDiv.append(author);
     bookDiv.append(pages);
     bookDiv.append(read);
+    bookDiv.append(exit);
+
+    bookDiv.id = `${i}`
 
     booksDiv.append(bookDiv);
-  })
+  }
 }
 
 function exitForm() {

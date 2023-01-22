@@ -77,3 +77,7 @@ body {
 .book p, .book h1{
   margin: 0;
 }
+
+.book .exit {
+  border-radius: 1px blue solid;
+}
