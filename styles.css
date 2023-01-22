@@ -26,6 +26,20 @@ body {
   align-items: center;
 }
 
+.container #exit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 50px;
+  background-color: transparent;
+  border: none;
+  color: white;
+}
+
+.container #exit:hover {
+  color: rgb(220, 220, 220);
+}
+
 .show {
   visibility: visible;
 }
@@ -39,7 +53,8 @@ body {
 #books {
   padding: 10px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));;
+  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  grid-gap: 10px;
 }
 
 .book {
