@@ -63,6 +63,9 @@ body {
   padding: 10px;
   background-color: white;
   gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 30px;
+  grid-template-rows: auto 1fr;
 }
 
 .book h1 {
@@ -74,10 +77,25 @@ body {
   margin-bottom: 10px;
 }
 
-.book p, .book h1{
+.book p, .book h1 {
   margin: 0;
 }
 
 .book .exit {
-  border-radius: 1px blue solid;
+  color: rgb(0, 0, 0);
+  border: none;
+  background-color: transparent;
+  font-size: 20px;
+  border-radius: 100%;
+  width: 30px;
+  height: 30px;
 }
+
+.book .exit:hover {
+  background-color: rgb(234, 234, 234);
+}
+
+.book .main-content {
+  grid-column-start: 1;
+  grid-column-end: -1;
+} 

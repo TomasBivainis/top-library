@@ -29,6 +29,8 @@ function displayBooks() {
 
     bookDiv.classList.add("book");
 
+    let mainContent = document.createElement("div");
+
     let title = document.createElement("h1");
     title.innerHTML = currentBook.title;
 
@@ -42,41 +44,45 @@ function displayBooks() {
     if(read) read.innerHTML = "The book is read.";
     else read.innerHTML = "The book is not read.";
 
-    //TODO: create a x (delete) button and make it work (deletes the book)
+    mainContent.appendChild(author);
+    mainContent.appendChild(pages);
+    mainContent.appendChild(read);
+
+    mainContent.classList.add("main-content");
 
     let exit = document.createElement("button");
     exit.innerHTML = "X";
     exit.classList.add("exit");
 
-    exit.addEventListener('click', e => {
-      index = e.composedPath()[1].id;
-
-      newLibrary = [];
-
-      for(let i = 0; i < myLibrary.length; i++) {
-        if(i == index) continue;
-        newLibrary.push(myLibrary[i]);
-      }
-
-      console.log(newLibrary);
-
-      myLibrary = newLibrary;
-
-      console.log(myLibrary);
-
-      displayBooks();
-    });
+    exit.addEventListener('click', deleteBook);
 
     bookDiv.append(title);
-    bookDiv.append(author);
-    bookDiv.append(pages);
-    bookDiv.append(read);
     bookDiv.append(exit);
+    bookDiv.append(mainContent);
 
     bookDiv.id = `${i}`
 
     booksDiv.append(bookDiv);
   }
+}
+
+function deleteBook(e) {
+  index = e.composedPath()[1].id;
+
+  newLibrary = [];
+
+  for(let i = 0; i < myLibrary.length; i++) {
+    if(i == index) continue;
+    newLibrary.push(myLibrary[i]);
+  }
+
+  console.log(newLibrary);
+
+  myLibrary = newLibrary;
+
+  console.log(myLibrary);
+
+  displayBooks();
 }
 
 function exitForm() {
