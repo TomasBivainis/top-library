@@ -9,6 +9,8 @@ body {
 .main{
   display: flex;
   flex-direction: column;
+  align-items: center;
+  
 }
 
 .container {
@@ -50,22 +52,44 @@ body {
   border-radius: 10px;
 }
 
+#title {
+  margin-bottom: 5px;
+  color: #301e02;
+  margin-top: 5px;
+}
+
+#addBook {
+  width: 120px;
+  height: 50px;
+  font-size: 22px;
+  border: none;
+  border-radius: 10px;
+  background-color: #d1a154;
+  color: #301e02;
+}
+
+#addBook:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
 #books {
   padding: 10px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(225px, 1fr));
+  grid-template-columns: repeat(auto-fit, min(content, 1fr));
   grid-gap: 10px;
+  width: 100%;
 }
 
 .book {
-  border: 2px solid black;
+  border: 2px solid #301e02;
   border-radius: 10px;
   padding: 10px;
-  background-color: white;
+  background-color: #caa15e;
   gap: 10px;
   display: grid;
   grid-template-columns: 1fr 30px;
   grid-template-rows: auto 1fr;
+  color: #301e02;
 }
 
 .book h1 {
@@ -92,7 +116,7 @@ body {
 }
 
 .book .exit:hover {
-  background-color: rgb(234, 234, 234);
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .book .main-content {
