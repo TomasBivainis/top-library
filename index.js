@@ -20,6 +20,7 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 function displayBooks() {
+
   booksDiv.innerHTML = "";
 
   for (let i = 0; i < myLibrary.length; i++) {
@@ -41,12 +42,19 @@ function displayBooks() {
     pages.innerHTML = `${currentBook.pages} pages`;
     
     let read = document.createElement("p");
-    if(read) read.innerHTML = "The book is read.";
+    if(myLibrary[i].read) read.innerHTML = "The book is read.";
     else read.innerHTML = "The book is not read.";
+
+    let btnChangeReadStatus = document.createElement("button");
+    btnChangeReadStatus.innerHTML = "Change read status";
+    btnChangeReadStatus.classList.add("changeReadStatus");
+
+    btnChangeReadStatus.addEventListener('click', changeReadStatus);
 
     mainContent.appendChild(author);
     mainContent.appendChild(pages);
     mainContent.appendChild(read);
+    mainContent.appendChild(btnChangeReadStatus);
 
     mainContent.classList.add("main-content");
 
@@ -67,7 +75,7 @@ function displayBooks() {
 }
 
 function deleteBook(e) {
-  index = e.composedPath()[1].id;
+  let index = e.composedPath()[1].id;
 
   newLibrary = [];
 
@@ -76,11 +84,7 @@ function deleteBook(e) {
     newLibrary.push(myLibrary[i]);
   }
 
-  console.log(newLibrary);
-
   myLibrary = newLibrary;
-
-  console.log(myLibrary);
 
   displayBooks();
 }
@@ -92,6 +96,14 @@ function exitForm() {
     i.value = "";
     i.checked = false;
   })
+}
+
+function changeReadStatus(e) {
+  let index = e.composedPath()[2].id;
+
+  myLibrary[index].read = !myLibrary[index].read;
+
+  displayBooks();
 }
 
 btn.addEventListener('click', () => {

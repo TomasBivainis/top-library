@@ -123,3 +123,11 @@ body {
   grid-column-start: 1;
   grid-column-end: -1;
 } 
+
+.main-content .changeReadStatus {
+  border: none;
+  margin-top: 5px;
+  padding: 10px;
+  border-radius: 10px;
+  font-size: 15px;
+}
