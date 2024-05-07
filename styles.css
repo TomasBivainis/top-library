@@ -1,9 +1,16 @@
+@font-face {
+  font-family: Inter;
+  src: url("./Inter/Inter-VariableFont_slnt\,wght.ttf");
+}
+
 * {
   box-sizing: border-box;
+  font-family: 'Inter';
 }
 
 body {
-  background-color: #d1a154;
+  background-color: #FCFAF8;
+  color: #130F0C;
 }
 
 .main{
@@ -54,7 +61,6 @@ body {
 
 #title {
   margin-bottom: 5px;
-  color: #301e02;
   margin-top: 5px;
 }
 
@@ -64,12 +70,8 @@ body {
   font-size: 22px;
   border: none;
   border-radius: 10px;
-  background-color: #d1a154;
-  color: #301e02;
-}
-
-#addBook:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: #C17749;
+  color: #FCFAF8;
 }
 
 #books {
@@ -77,14 +79,19 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, min(content, 1fr));
   grid-gap: 10px;
-  width: 100%;
+  width: 95%;
+  background-color: #e3aa87;
+  border-radius: 12px;
+  margin: 10px;
+  margin-bottom: 15px;
+  height: 80vh;
+  overflow: scroll;
 }
 
 .book {
-  border: 2px solid #301e02;
-  border-radius: 10px;
+  border-radius: 12px;
   padding: 10px;
-  background-color: #caa15e;
+  background-color: #FCFAF8;
   gap: 10px;
   display: grid;
   grid-template-columns: 1fr 30px;
